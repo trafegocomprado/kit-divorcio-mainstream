@@ -321,11 +321,49 @@
     .authority-note { padding: var(--space-5); border-top: 1px solid var(--sage); border-bottom: 1px solid var(--sage); }
     .authority-note .signature { margin: var(--space-4) 0 .25rem; font-family: var(--font-display); font-size: 1.65rem; }
 
-    .proof-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: var(--space-5); }
-    .proof-slot { min-height: 15rem; padding: 1.25rem; border: 1px dashed rgba(255, 250, 242, .4); border-radius: var(--radius-md); }
-    .proof-slot__label { color: #f0ad9b; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
-    .proof-slot blockquote { margin: 2rem 0 0; color: #fffaf2; font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; }
-    .proof-slot p { margin-top: 1rem; color: #b9c8c3; font-size: .82rem; }
+    .proof-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: var(--space-5); }
+    .video-proof { overflow: hidden; border: 1px solid rgba(255, 250, 242, .22); border-radius: var(--radius-md); background: rgba(8, 39, 33, .72); }
+    .video-proof__media { position: relative; aspect-ratio: 16 / 9; background: #071d18; }
+    .video-proof__trigger {
+      position: relative;
+      display: grid;
+      width: 100%;
+      min-height: 100%;
+      padding: 0;
+      place-items: center;
+      border: 0;
+      color: #fffaf2;
+      background: transparent;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .video-proof__trigger::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6, 28, 23, .04), rgba(6, 28, 23, .58)); transition: background 180ms ease-out; }
+    .video-proof__trigger:hover::after { background: linear-gradient(180deg, rgba(6, 28, 23, 0), rgba(6, 28, 23, .42)); }
+    .video-proof__trigger:focus-visible { outline: 3px solid #f0ad9b; outline-offset: -3px; }
+    .video-proof__thumbnail { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
+    .video-proof__play {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 4.25rem;
+      height: 4.25rem;
+      place-items: center;
+      border: 1px solid rgba(255, 250, 242, .75);
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 .8rem 2rem rgba(3, 18, 15, .35);
+      transition: transform 180ms ease-out, background 180ms ease-out;
+    }
+    .video-proof__play::before { content: ''; width: 0; height: 0; margin-left: .25rem; border-top: .7rem solid transparent; border-bottom: .7rem solid transparent; border-left: 1.05rem solid #fffaf2; }
+    .video-proof__trigger:hover .video-proof__play { background: #d65d46; transform: scale(1.05); }
+    .video-proof__frame { width: 100%; height: 100%; border: 0; }
+    .video-proof__body { padding: 1.1rem 1.2rem 1.25rem; }
+    .video-proof__eyebrow { margin: 0 0 .45rem; color: #f0ad9b; font-size: .7rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .video-proof__body h3 { margin: 0; color: #fffaf2; font-size: 1.35rem; }
+    .video-proof__body p { margin: .55rem 0 0; color: #b9c8c3; font-size: .9rem; }
+    .video-proof__fallback { display: inline-flex; min-height: 2.75rem; align-items: center; margin-top: .45rem; color: #fffaf2; font-weight: 700; text-underline-offset: .18em; }
+    .video-proof__fallback:visited { color: #e3ebe0; }
+    .video-proof__status { min-height: 1px; }
 
     .stack { margin-top: var(--space-5); border-top: 1px solid var(--line); }
     .stack__item {
@@ -463,7 +501,6 @@
       .mechanism-mark { min-height: 15rem; }
       .change-list, .proof-grid { grid-template-columns: 1fr; }
       .change-item:nth-child(odd) { border-right: 0; }
-      .proof-slot { min-height: 11rem; }
       .stack__item { grid-template-columns: 1fr auto; gap: .4rem 1rem; }
       .stack__item p { grid-column: 1 / -1; }
       .stack__total { justify-content: space-between; }
@@ -609,21 +646,66 @@
         <p class="eyebrow" style="color:#f0ad9b">Prova com contexto</p>
         <h2 id="prova-title">O que observar nos relatos de quem já aplicou a metodologia.</h2>
         <p class="lede">Procure a situação de partida, a ferramenta usada e a mudança percebida. Assim, o depoimento ajuda você a avaliar se o kit combina com o seu momento.</p>
-        <div class="proof-grid">
-          <article class="proof-slot" data-reveal>
-            <span class="proof-slot__label">[VALIDAÇÃO PENDENTE] Depoimento real 1</span>
-            <blockquote>Inserir fala autorizada com uma mudança específica.</blockquote>
-            <p>Nome · contexto inicial · ferramenta usada · data</p>
+        <div class="proof-grid" aria-label="Quatro depoimentos em vídeo">
+          <article class="video-proof" data-reveal>
+            <div class="video-proof__media">
+              <button class="video-proof__trigger" type="button" data-youtube-id="NjGfd9zKDf4" aria-label="Reproduzir o depoimento em vídeo 1" aria-describedby="video-proof-status-1">
+                <img class="video-proof__thumbnail" src="assets/proof/depoimento-1.webp" alt="Miniatura do primeiro depoimento em vídeo" width="300" height="300" loading="lazy" decoding="async">
+                <span class="video-proof__play" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="video-proof__body">
+              <p class="video-proof__eyebrow">Depoimento em vídeo 1</p>
+              <h3>Uma experiência contada por quem viveu o processo.</h3>
+              <p>Clique para assistir. O vídeo só é carregado depois da sua escolha.</p>
+              <a class="video-proof__fallback" href="https://www.youtube.com/watch?v=NjGfd9zKDf4" target="_blank" rel="noopener noreferrer">Abrir diretamente no YouTube</a>
+              <p class="video-proof__status" id="video-proof-status-1" aria-live="polite"></p>
+            </div>
           </article>
-          <article class="proof-slot" data-reveal>
-            <span class="proof-slot__label">[VALIDAÇÃO PENDENTE] Depoimento real 2</span>
-            <blockquote>Inserir fala autorizada com uma mudança específica.</blockquote>
-            <p>Nome · contexto inicial · ferramenta usada · data</p>
+          <article class="video-proof" data-reveal>
+            <div class="video-proof__media">
+              <button class="video-proof__trigger" type="button" data-youtube-id="KLxQ5Dr6W8s" aria-label="Reproduzir o depoimento em vídeo 2" aria-describedby="video-proof-status-2">
+                <img class="video-proof__thumbnail" src="assets/proof/depoimento-2.webp" alt="Miniatura do segundo depoimento em vídeo" width="300" height="300" loading="lazy" decoding="async">
+                <span class="video-proof__play" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="video-proof__body">
+              <p class="video-proof__eyebrow">Depoimento em vídeo 2</p>
+              <h3>Um relato preservado no formato original.</h3>
+              <p>Clique para assistir. O vídeo só é carregado depois da sua escolha.</p>
+              <a class="video-proof__fallback" href="https://www.youtube.com/watch?v=KLxQ5Dr6W8s" target="_blank" rel="noopener noreferrer">Abrir diretamente no YouTube</a>
+              <p class="video-proof__status" id="video-proof-status-2" aria-live="polite"></p>
+            </div>
           </article>
-          <article class="proof-slot" data-reveal>
-            <span class="proof-slot__label">[VALIDAÇÃO PENDENTE] Depoimento real 3</span>
-            <blockquote>Inserir fala autorizada com uma mudança específica.</blockquote>
-            <p>Nome · contexto inicial · ferramenta usada · data</p>
+          <article class="video-proof" data-reveal>
+            <div class="video-proof__media">
+              <button class="video-proof__trigger" type="button" data-youtube-id="XrZHAOsWbcs" aria-label="Reproduzir o depoimento em vídeo 3" aria-describedby="video-proof-status-3">
+                <img class="video-proof__thumbnail" src="assets/proof/depoimento-3.webp" alt="Miniatura do terceiro depoimento em vídeo" width="300" height="300" loading="lazy" decoding="async">
+                <span class="video-proof__play" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="video-proof__body">
+              <p class="video-proof__eyebrow">Depoimento em vídeo 3</p>
+              <h3>Mais uma percepção sobre a metodologia.</h3>
+              <p>Clique para assistir. O vídeo só é carregado depois da sua escolha.</p>
+              <a class="video-proof__fallback" href="https://www.youtube.com/watch?v=XrZHAOsWbcs" target="_blank" rel="noopener noreferrer">Abrir diretamente no YouTube</a>
+              <p class="video-proof__status" id="video-proof-status-3" aria-live="polite"></p>
+            </div>
+          </article>
+          <article class="video-proof" data-reveal>
+            <div class="video-proof__media">
+              <button class="video-proof__trigger" type="button" data-youtube-id="__rkMASEkDc" aria-label="Reproduzir o depoimento em vídeo 4" aria-describedby="video-proof-status-4">
+                <img class="video-proof__thumbnail" src="assets/proof/depoimento-4.webp" alt="Miniatura do quarto depoimento em vídeo" width="300" height="300" loading="lazy" decoding="async">
+                <span class="video-proof__play" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="video-proof__body">
+              <p class="video-proof__eyebrow">Depoimento em vídeo 4</p>
+              <h3>Um quarto relato para ampliar a referência.</h3>
+              <p>Clique para assistir. O vídeo só é carregado depois da sua escolha.</p>
+              <a class="video-proof__fallback" href="https://www.youtube.com/watch?v=__rkMASEkDc" target="_blank" rel="noopener noreferrer">Abrir diretamente no YouTube</a>
+              <p class="video-proof__status" id="video-proof-status-4" aria-live="polite"></p>
+            </div>
           </article>
         </div>
       </div>
@@ -754,6 +836,24 @@
           button.setAttribute('aria-expanded', String(!open));
           answer.hidden = open;
         });
+      });
+
+      document.querySelectorAll('.video-proof__trigger').forEach((button) => {
+        button.addEventListener('click', () => {
+          const videoId = button.dataset.youtubeId;
+          const media = button.closest('.video-proof__media');
+          const status = document.getElementById(button.getAttribute('aria-describedby'));
+          const frame = document.createElement('iframe');
+          frame.className = 'video-proof__frame';
+          frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+          frame.title = button.getAttribute('aria-label').replace('Reproduzir', 'Depoimento');
+          frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          frame.allowFullscreen = true;
+          frame.referrerPolicy = 'strict-origin-when-cross-origin';
+          media.replaceChildren(frame);
+          if (status) status.textContent = 'Vídeo carregado. Use os controles do player para assistir.';
+          frame.focus();
+        }, { once: true });
       });
 
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
