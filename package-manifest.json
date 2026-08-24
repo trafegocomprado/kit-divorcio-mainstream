@@ -1,0 +1,30 @@
+{
+  "product": "Kit de Ferramentas Pós-Divórcio",
+  "paradigm": "mainstream",
+  "implementation_mode": "static-html",
+  "experience_tier": "vanilla-mainstream",
+  "premium_preset": null,
+  "reference_contract": {
+    "status": "valid",
+    "reference_urls": [
+      "https://psipaulamarques.com.br/alem-do-divorcio/",
+      "https://priscillamacanhao.com/superarofim/",
+      "https://caroldorneles.com/atravessia2/"
+    ],
+    "decision_vs_refs": "hybridize"
+  },
+  "source_build_dir": "lp/build",
+  "github_package_dir": "lp/deploy/github-cloudflare",
+  "cloudflare": {
+    "build_command": "",
+    "build_output_directory": "public",
+    "root_directory": "/",
+    "recommended_project_name": "kit-divorcio-mainstream"
+  },
+  "generated_at": "2026-08-24T16:09:46-03:00",
+  "notes": [
+    "Pacote técnico pronto para GitHub.",
+    "Publicação comercial bloqueada até concluir as dependências P0 listadas em lp/build/build.json."
+  ]
+}
+

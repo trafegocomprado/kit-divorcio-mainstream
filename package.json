@@ -1,0 +1,13 @@
+{
+  "name": "kit-divorcio-mainstream",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page PageMind para o Kit de Ferramentas Pós-Divórcio.",
+  "scripts": {
+    "preview": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public --project-name kit-divorcio-mainstream --branch main"
+  },
+  "devDependencies": {
+    "wrangler": "4.102.0"
+  }
+}
