@@ -2,9 +2,9 @@
 
 Este diretório contém o pacote estático de produção da landing page do Kit de Ferramentas Pós-Divórcio.
 
-## Atenção antes de publicar
+## Atenção antes de usar em tráfego
 
-O build técnico passou nos gates locais, mas a publicação comercial está bloqueada até substituir os avisos de validação por conteúdo real: garantia, credenciais, três depoimentos, descrição final do mecanismo, acesso vitalício e links legais.
+O build técnico está publicado para validação, mas não deve receber tráfego comercial até substituir os avisos de validação por conteúdo real: garantia, credenciais, três depoimentos, descrição final do mecanismo, acesso vitalício e links legais.
 
 ## Preview local
 

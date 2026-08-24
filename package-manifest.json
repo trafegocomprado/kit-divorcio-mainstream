@@ -22,9 +22,17 @@
     "recommended_project_name": "kit-divorcio-mainstream"
   },
   "generated_at": "2026-08-24T16:09:46-03:00",
+  "deployment": {
+    "status": "production",
+    "method": "cloudflare-pages-direct-upload",
+    "production_branch": "main",
+    "github_repository": "https://github.com/trafegocomprado/kit-divorcio-mainstream",
+    "cloudflare_account": "MPX E. D. L.",
+    "cloudflare_project": "kit-divorcio-mainstream",
+    "production_url": "https://kit-divorcio-mainstream.pages.dev"
+  },
   "notes": [
-    "Pacote técnico pronto para GitHub.",
+    "Pacote técnico versionado no GitHub e publicado no Cloudflare Pages.",
     "Publicação comercial bloqueada até concluir as dependências P0 listadas em lp/build/build.json."
   ]
 }
-
