@@ -1,8 +1,12 @@
 # Vídeos de prova social — design
 
-Data: 24/08/2026  
-Produto: Kit de Ferramentas Pós-Divórcio  
+Data: 24/08/2026
+
+Produto: Kit de Ferramentas Pós-Divórcio
+
 Página: `public/index.html`
+
+Relatório: `outputs/kit-divorcio/reports/pagemind_kit-divorcio_m1m2m3_report.*`
 
 ## Objetivo
 
@@ -81,9 +85,53 @@ O ciclo TDD começa com testes que devem falhar no HTML atual por ausência dos 
 - produção responde 200 e contém os quatro IDs após o deploy;
 - DOM inicial em produção contém zero iframe e, após um clique, exatamente um iframe com o ID acionado.
 
+## Correção do relatório M1+M2+M3
+
+O relatório HTML, a versão paginada e o PDF serão regenerados depois da atualização da LP. A correção será factual, sem inventar nomes, falas ou resultados que não estejam disponíveis.
+
+### M1 — Diagnóstico
+
+- Registrar explicitamente que a página original contém quatro depoimentos em vídeo do YouTube.
+- Preservar o score original de prova social em `4/10` e a matriz em `7/31`, pois o analyzer já havia contabilizado a existência do formato em vídeo; a penalização decorre da falta de nome, transcrição, data e resultado verificável no texto, além da posição precoce.
+- Substituir qualquer leitura que sugira ausência de prova por: `prova existente, pouco contextualizada e usada cedo demais`.
+- Adicionar um inventário compacto dos quatro IDs e explicar que a correção é reposicionamento + contexto, não criação de prova do zero.
+
+### M2 — Oferta
+
+- Manter o diagnóstico global da oferta enquanto garantia, âncora e mecanismo continuarem pendentes.
+- Retirar `prova inexistente` ou `validar prova` da lista de bloqueios.
+- Trocar por `contextualizar os quatro vídeos existentes com identificação e síntese autorizada`.
+- Atualizar a decisão de ecossistema para priorizar mensagem, contexto da prova e garantia antes de order bump ou upsell.
+
+### M3 — LP nova
+
+- Registrar os quatro vídeos como elementos de prova preservados da LP original.
+- Alterar a seção construída de `três placeholders` para `quatro cards de vídeo com carregamento sob demanda`.
+- Atualizar melhorias, decisões do builder e pendências P0.
+- Manter seis grupos operacionais de P0 — garantia, credenciais, contexto/transcrição autorizada dos vídeos, mecanismo, acesso vitalício e URLs legais — substituindo a exigência de novos depoimentos pela contextualização da prova existente.
+- Substituir a frase `a prova ainda precisa ser real` por `a prova existe; ainda precisa de contexto textual autorizado`.
+- Atualizar a captura da LP nova no relatório depois do deploy.
+
+### PDF
+
+- Regenerar o PDF a partir do HTML paginado corrigido.
+- Inspecionar todas as páginas rasterizadas, com atenção às páginas de diagnóstico, oferta e comparativo antes/depois.
+- Rejeitar páginas órfãs, cards cortados, texto fora da área ou imagens em branco.
+
+### Testes adicionais do relatório
+
+- os dois HTMLs gerados não podem conter `a prova ainda precisa ser real`;
+- o relatório deve mencionar `4 depoimentos em vídeo` e os quatro IDs;
+- o M2 deve reconhecer `prova existente`;
+- o M3 deve mencionar `quatro cards de vídeo` e carregamento sob demanda;
+- o PDF deve ter texto em todas as páginas e zero blocos fora da área;
+- a inspeção visual deve confirmar ausência de cortes e páginas órfãs.
+
 ## Fora de escopo
 
 - editar ou transcrever o conteúdo dos vídeos;
 - inventar nomes, resultados ou falas das participantes;
 - criar carrossel, modal ou autoplay sem interação;
 - alterar hero, oferta, checkout ou ordem das demais seções.
+- recalcular retroativamente o score original sem nova evidência textual;
+- apresentar os vídeos como prova específica do Kit quando a página original os descreve como relatos da metodologia Cura Energética aplicada ao Divórcio Energético.
