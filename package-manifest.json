@@ -22,6 +22,12 @@
     "recommended_project_name": "kit-divorcio-mainstream"
   },
   "generated_at": "2026-08-24T16:09:46-03:00",
+  "social_proof": {
+    "status": "implemented",
+    "videos": 4,
+    "loading": "iframe-on-click",
+    "embed_domain": "youtube-nocookie.com"
+  },
   "deployment": {
     "status": "production",
     "method": "cloudflare-pages-direct-upload",

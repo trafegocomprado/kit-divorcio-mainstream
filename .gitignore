@@ -8,3 +8,5 @@ Thumbs.db
 .dev.vars
 dist/
 .worktrees/
+__pycache__/
+.pytest_cache/
